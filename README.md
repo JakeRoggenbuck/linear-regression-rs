@@ -32,10 +32,10 @@ fn main() {
 
 ## API
 ```rust
-squared_error(&mut self, f: &dyn Fn(f64) -> f64) -> f64;
-mean_squared_error(&mut self, f: &dyn Fn(f64) -> f64) -> f64;
-gradient_descent(&mut self, slope: f64, b: f64, learning_rate: f64) -> (f64, f64);
-regression(&mut self, epoch: i32, learning_rate: f64) -> (f64, f64);
+fn squared_error(&mut self, f: &dyn Fn(f64) -> f64) -> f64;
+fn mean_squared_error(&mut self, f: &dyn Fn(f64) -> f64) -> f64;
+fn gradient_descent(&mut self, slope: f64, b: f64, learning_rate: f64) -> (f64, f64);
+fn regression(&mut self, epoch: i32, learning_rate: f64) -> (f64, f64);
 ```
 
 ## Contributing
