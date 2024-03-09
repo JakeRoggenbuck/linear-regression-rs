@@ -7,13 +7,13 @@ trait Regression {
     fn regression(&mut self, epoch: i32, learning_rate: f64) -> (f64, f64);
 }
 
-struct Frame {
+struct LinearFrame {
     y: Vec<f64>,
     x: Vec<f64>,
     verbose: bool,
 }
 
-impl Regression for Frame {
+impl Regression for LinearFrame {
     fn squared_error(&mut self, f: &dyn Fn(f64) -> f64) -> f64 {
         let mut error = 0.0;
 
@@ -75,7 +75,7 @@ mod tests {
 
     #[test]
     fn squared_error_test() {
-        let mut frame = Frame {
+        let mut frame = LinearFrame {
             x: vec![1.0, 2.0, 3.0, 4.0, 5.0],
             y: vec![1.0, 2.0, 4.0, 4.0, 5.0],
             verbose: false,
@@ -91,7 +91,7 @@ mod tests {
 
     #[test]
     fn mean_squared_error_test() {
-        let mut frame = Frame {
+        let mut frame = LinearFrame {
             x: vec![1.0, 2.0, 3.0, 4.0, 5.0],
             y: vec![1.0, 2.0, 4.0, 4.0, 5.0],
             verbose: false,
@@ -108,7 +108,7 @@ mod tests {
     #[test]
     fn regression_test() {
         // f(x) = x
-        let mut frame = Frame {
+        let mut frame = LinearFrame {
             x: vec![1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0],
             y: vec![1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0],
             verbose: false,
@@ -120,7 +120,7 @@ mod tests {
         assert!(f64::abs(b) < 0.00001);
 
         // f(x) = 3x + 4
-        let mut frame = Frame {
+        let mut frame = LinearFrame {
             x: vec![3.0, 2.0, 1.0, 4.3, 3.4, 8.2, 1.1, 4.5, 6.7],
             y: vec![13.0, 10.0, 7.0, 16.9, 14.2, 28.6, 7.3, 17.5, 24.1],
             verbose: false,
